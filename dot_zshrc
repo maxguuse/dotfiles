@@ -36,6 +36,4 @@ if [ -x "$(command -v batcat)" ]; then
 	alias bat="batcat"
 fi
 
-eval $(thefuck --alias)
-
 export PATH="/snap/bin:/home/gguuse/node_modules/.bin/:/home/gguuse/go/bin/:/usr/local/go/bin:$PATH"
