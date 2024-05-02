@@ -29,7 +29,7 @@ if [ -x "$(command -v eza)" ]; then
 fi
 
 if [ -x "$(command -v btop)" ]; then
-	alias top="btop"
+	alias top="bottom"
 fi
 
 if [ -x "$(command -v batcat)" ]; then
