@@ -17,7 +17,7 @@ zstyle ':omz:update' mode reminder
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git golang docker docker-compose zsh-syntax-highlighting zsh-autosuggestions sudo ubuntu zsh-interactive-cd zsh-fast-alias-tips cd-reporoot autoupdate auto-ls)
+plugins=(git golang docker docker-compose zsh-syntax-highlighting zsh-autosuggestions sudo ubuntu zsh-interactive-cd cd-reporoot autoupdate auto-ls)
 
 source $ZSH/oh-my-zsh.sh
 
