@@ -28,7 +28,7 @@ if [ -x "$(command -v eza)" ]; then
 	alias la="eza --long --all"
 fi
 
-if [ -x "$(command -v btop)" ]; then
+if [ -x "$(command -v bottom)" ]; then
 	alias top="bottom"
 fi
 
