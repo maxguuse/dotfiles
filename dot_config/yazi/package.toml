@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "yazi-rs/plugins:git", rev = "71c4fc2" }, { use = "Rolv-Apneseth/bypass", rev = "6c5414f" }, { use = "Lil-Dank/lazygit", rev = "c82794f" }, { use = "yazi-rs/plugins:smart-enter", rev = "71c4fc2" }, { use = "Ape/simple-status", rev = "3ef1447" }, { use = "kirasok/torrent-preview", rev = "c9e67df" }, { use = "ndtoan96/ouch", rev = "b869886" }]
+
+[flavor]
+deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "fc8eeaa" }]
