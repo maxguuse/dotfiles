@@ -1,0 +1,129 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "catppuccin_mocha"
+
+format = """
+$directory$git_branch${custom.git_change}$git_status
+$character"""
+
+right_format = "$cmd_duration${custom.wifi_on}${custom.wifi_off}${custom.vpn_on}${custom.vpn_off}"
+
+[directory]
+truncation_length = 4
+fish_style_pwd_dir_length = 3
+style = "sapphire"
+home_symbol = "~"
+truncate_to_repo = false
+
+[git_branch]
+format = "[$branch(:$remote_branch)](surface1)"
+
+[git_status]
+format = " [$stashed](surface1) [$ahead_behind](maroon)"
+conflicted = "="
+stashed = "$count"
+
+[custom.git_change]
+when = """
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  exit 1
+fi
+
+git diff-files --no-ext-diff --quiet
+unstaged=$?
+
+git diff-index --no-ext-diff --quiet --cached HEAD
+uncommited=$?
+
+untracked=$(git ls-files -o --exclude-standard)
+
+if [ "$unstaged" -eq 1 ] || [ "$uncommited" -eq 1 ] || [ -n "$untracked" ]; then
+  exit 0
+fi
+
+exit 1
+"""
+shell = "dash"
+style = "surface1"
+command = "echo '*'"
+
+[character]
+success_symbol = "[](mauve)"
+error_symbol = "[](red)"
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+
+[custom.wifi_on]
+format = " [󰖩 $output](surface1)"
+when = """
+netw=$(cat /tmp/current-network)
+if [ -n "$netw" ]; then
+  exit 0
+fi
+exit 1
+"""
+shell = "dash"
+command = "cat /tmp/current-network"
+
+[custom.wifi_off]
+format = " [󰖪](surface1)"
+when = """
+netw=$(cat /tmp/current-network)
+if [ -n "$netw" ]; then
+  exit 1
+fi
+exit 0
+"""
+shell = "dash"
+
+[custom.vpn_on]
+format = " [](green)"
+when = """
+netw=$(cat /tmp/is-vpn-on)
+if [ -n "$netw" ]; then
+  exit 0
+fi
+exit 1
+"""
+shell = "dash"
+
+[custom.vpn_off]
+format = " [](surface1)"
+when = """
+netw=$(cat /tmp/is-vpn-on)
+if [ -n "$netw" ]; then
+  exit 1
+fi
+exit 0
+"""
+shell = "dash"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
