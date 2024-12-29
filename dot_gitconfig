@@ -1,11 +1,18 @@
 [user]
 	name = maxguuse
 	email = max.pink.goose@gmail.com
+	signingkey = /home/ggoose/.ssh/main_key.pub
 [core]
 	excludesFile = ~/.gitignore
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
