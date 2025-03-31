@@ -1,0 +1,9 @@
+Host github.com
+	Hostname github.com
+	User git
+	IdentityFile ~/.ssh/main_key
+Host nether
+	Hostname 100.115.56.73
+	User ggoose
+	IdentityFile ~/.ssh/main_key
+	LocalForward 8000 localhost:8000
