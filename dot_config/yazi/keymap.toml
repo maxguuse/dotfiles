@@ -4,7 +4,7 @@ run = "plugin bypass"
 desc = "Recursively enter child directory, skipping children with only a single subdirectory"
 [[manager.prepend_keymap]]
 on = ["H"]
-run = "plugin bypass --args=reverse"
+run = "plugin bypass reverse"
 desc = "Recursively enter parent directory, skipping parents with only a single subdirectory"
 
 [[manager.prepend_keymap]]
@@ -14,7 +14,7 @@ desc = "run lazygit"
 
 [[manager.prepend_keymap]]
 on = ["C"]
-run = "plugin ouch --args=zip"
+run = "plugin ouch zip"
 desc = "Compress with ouch"
 
 [[manager.prepend_keymap]]

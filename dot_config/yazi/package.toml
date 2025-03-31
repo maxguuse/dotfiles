@@ -1,5 +1,39 @@
-[plugin]
-deps = [{ use = "yazi-rs/plugins:git", rev = "71c4fc2" }, { use = "Rolv-Apneseth/bypass", rev = "6c5414f" }, { use = "Lil-Dank/lazygit", rev = "c82794f" }, { use = "yazi-rs/plugins:smart-enter", rev = "71c4fc2" }, { use = "Ape/simple-status", rev = "3ef1447" }, { use = "kirasok/torrent-preview", rev = "c9e67df" }, { use = "ndtoan96/ouch", rev = "b869886" }]
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "2730199"
+hash = "e0d2c8d7e7afe5b82270367098d1a821"
 
-[flavor]
-deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "fc8eeaa" }]
+[[plugin.deps]]
+use = "Rolv-Apneseth/bypass"
+rev = "ecb1f7f"
+hash = "905054b2df08ff79af223e0b6f249fa3"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "9f924e3"
+hash = "2b0c33928986f126d5c5a4cac31a6b46"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "2730199"
+hash = "7918aab6a71caf31b58411f789195677"
+
+[[plugin.deps]]
+use = "Ape/simple-status"
+rev = "d0da104"
+hash = "68603fdd1dcaf415227e2c77a9317947"
+
+[[plugin.deps]]
+use = "kirasok/torrent-preview"
+rev = "4ca5996"
+hash = "6af40ce6b2cd849b5fa32de04a598b06"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "558188d"
+hash = "2d0afef7b50747c543c4304004a72cec"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "68326b4"
+hash = "2ac87e1b3a61f5887472899e86535d29"
