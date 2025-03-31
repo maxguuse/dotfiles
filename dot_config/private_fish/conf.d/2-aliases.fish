@@ -18,14 +18,16 @@ alias fff="fastfetch --config ~/.config/fastfetch/config-f.jsonc"
 
 alias lg="lazygit"
 alias ld="lazydocker"
+alias lq="lazysql"
 
 alias l="eza --color=always --all --group-directories-first"
 alias ls="eza --color=always --icons=always --all --long --git --group-directories-first --no-filesize --no-time --no-user"
 
 alias rm="trash -v"
 
-alias tree="erd --hidden --no-git --no-ignore --prune --human --icons --disk-usage physical --dir-order first"
+alias tree="erd --hidden --no-git --no-ignore --prune --human --icons --disk-usage physical --layout inverted --dir-order last"
 alias bench="hyperfine"
+alias scc="scc --gen --no-complexity --no-cocomo"
 
 alias tdu="transmission-daemon"
 alias tdd="transmission-remote --exit"
@@ -43,6 +45,7 @@ alias gowu="go work use"
 alias gor="go run"
 alias gob="go build"
 alias gog="go get"
+alias got="go tool"
 
 # Docker
 alias dps="docker ps -a --format \"table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.State}}\t{{.Status}}\""
@@ -86,13 +89,12 @@ end
 #alias ssh="kitty +kitten ssh"
 function s
     if test (count $argv) -eq 0
-        sshs
+        sshs --template "kitty +kitten ssh \"{{{name}}}\""
     else
         kitty +kitten ssh $argv
     end
 end
 
-# Disable kitty padding when using neovim
 if test -x (command -v nvim)
     function v
         set curr (pwd)
@@ -103,13 +105,11 @@ if test -x (command -v nvim)
 
         set last_dir_file "$HOME/.cache/nvim/last_dir/$hash"
         if test -f $last_dir_file
-            set last_dir (cat $last_dir_file)
+            set last_dir (/bin/cat $last_dir_file)
 
-            if [ "$last_dir" = "$curr" ]
-                return
+            if [ "$last_dir" != "$curr" ]
+                c $last_dir
             end
-
-            c $last_dir
         end
         trash-put $last_dir_file
     end
@@ -119,7 +119,7 @@ function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
     if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
+        c $cwd
     end
     trash-put -f -- "$tmp"
 end
