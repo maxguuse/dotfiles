@@ -7,6 +7,9 @@ alias bf="btm"
 
 alias wfpass="nmcli device wifi show-password"
 
+alias sysoff="systemctl poweroff"
+alias sysreb="systemctl reboot"
+
 alias ping="gping"
 alias pport="ss -tulnp | grep LISTEN"
 alias ip="ip -c -br"
@@ -17,6 +20,7 @@ alias ff="fastfetch"
 alias fff="fastfetch --config ~/.config/fastfetch/config-f.jsonc"
 
 alias lg="lazygit"
+alias lj="lazyjj"
 alias ld="lazydocker"
 alias lq="lazysql"
 
@@ -29,10 +33,12 @@ alias tree="erd --hidden --no-git --no-ignore --prune --human --icons --disk-usa
 alias bench="hyperfine"
 alias scc="scc --gen --no-complexity --no-cocomo"
 
+# Transmission
 alias tdu="transmission-daemon"
 alias tdd="transmission-remote --exit"
 alias tdl="transmission-remote --list"
 
+# Tailscale
 alias tsu="sudo tailscale up"
 alias tsd="sudo tailscale down"
 alias tss="tailscale status"
@@ -99,11 +105,15 @@ if test -x (command -v nvim)
     function v
         set curr (pwd)
         set hash (openssl rand -hex 16)
-        mkdir -p $HOME/.cache/nvim/last_dir
+        mkdir -p /tmp/nvim_last_dir
 
-        NVIM_LAST_FILENAME=$hash nvim $argv
+        kitty @ --to $KITTY_LISTEN_ON set-spacing padding=0
 
-        set last_dir_file "$HOME/.cache/nvim/last_dir/$hash"
+        NVIM_LAST_FILENAME=/tmp/nvim_last_dir/$hash nvim $argv
+
+        kitty @ --to $KITTY_LISTEN_ON set-spacing padding=default
+
+        set last_dir_file "/tmp/nvim_last_dir/$hash"
         if test -f $last_dir_file
             set last_dir (/bin/cat $last_dir_file)
 
@@ -111,7 +121,6 @@ if test -x (command -v nvim)
                 c $last_dir
             end
         end
-        trash-put $last_dir_file
     end
 end
 
@@ -131,4 +140,15 @@ function wlppr
     for monitor in $monitors
         hyprctl hyprpaper wallpaper "$monitor,$argv"
     end
+end
+
+function update-all
+    echo "Updating YAY packages"
+    yay -Syuq
+
+    echo "Updating PIPX packages"
+    pipx upgrade-all
+
+    echo "Updating FLATPAK packages"
+    flatpak update
 end

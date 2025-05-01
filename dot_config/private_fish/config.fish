@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set newPath "$HOME/.cargo/bin:$HOME/.local/bin:/snap/bin:$HOME/node_modules/.bin/:$HOME/go/bin/:/usr/local/go/bin"
+set newPath "$HOME/.cargo/bin:$HOME/.local/bin:/snap/bin:$HOME/node_modules/.bin:$GOPATH/bin:/usr/local/go/bin"
 if not contains -- "$newPath" $PATH
     set -gx PATH $PATH $newPath
 end

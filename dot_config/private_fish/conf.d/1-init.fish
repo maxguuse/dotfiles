@@ -8,4 +8,6 @@ zoxide init fish | source
 thefuck --alias | source
 tailscale completion fish | source
 
+source "$HOME/.cargo/env.fish"
+
 fish_vi_key_bindings
