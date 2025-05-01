@@ -13,6 +13,11 @@ run = "plugin lazygit"
 desc = "run lazygit"
 
 [[manager.prepend_keymap]]
+on = ["g", "v"]
+run = "cd /home/ggoose/Videos"
+desc = "Go to ~/Videos"
+
+[[manager.prepend_keymap]]
 on = ["C"]
 run = "plugin ouch zip"
 desc = "Compress with ouch"
