@@ -9,6 +9,7 @@ alias wfpass="nmcli device wifi show-password"
 
 alias sysoff="systemctl poweroff"
 alias sysreb="systemctl reboot"
+alias systui="systemctl-tui"
 
 alias ping="gping"
 alias pport="ss -tulnp | grep LISTEN"
@@ -20,9 +21,7 @@ alias ff="fastfetch"
 alias fff="fastfetch --config ~/.config/fastfetch/config-f.jsonc"
 
 alias lg="lazygit"
-alias lj="lazyjj"
 alias ld="lazydocker"
-alias lq="lazysql"
 
 alias l="eza --color=always --all --group-directories-first"
 alias ls="eza --color=always --icons=always --all --long --git --group-directories-first --no-filesize --no-time --no-user"
@@ -107,11 +106,7 @@ if test -x (command -v nvim)
         set hash (openssl rand -hex 16)
         mkdir -p /tmp/nvim_last_dir
 
-        kitty @ --to $KITTY_LISTEN_ON set-spacing padding=0
-
         NVIM_LAST_FILENAME=/tmp/nvim_last_dir/$hash nvim $argv
-
-        kitty @ --to $KITTY_LISTEN_ON set-spacing padding=default
 
         set last_dir_file "/tmp/nvim_last_dir/$hash"
         if test -f $last_dir_file
@@ -151,4 +146,7 @@ function update-all
 
     echo "Updating FLATPAK packages"
     flatpak update
+
+    echo "Updating GO binaries"
+    ~/Documents/projects/scripts/update-go-bin/update-go-bin.sh
 end

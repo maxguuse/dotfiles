@@ -5,7 +5,6 @@ starship init fish | source
 enable_transience
 
 zoxide init fish | source
-thefuck --alias | source
 tailscale completion fish | source
 
 source "$HOME/.cargo/env.fish"
