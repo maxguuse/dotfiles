@@ -1,36 +1,33 @@
+# General utilities
 alias yay="yay --color=always"
+alias bf="btm"
+alias h="history"
+alias bench="hyperfine"
+alias scc="scc --gen --no-complexity --no-cocomo"
+alias ff="fastfetch"
+alias fff="fastfetch --config ~/.config/fastfetch/config-f.jsonc"
+alias lg="lazygit"
+alias ld="lazydocker"
+
+# Changes to default utilities
 alias grep="rg"
 alias find="fd"
+alias date="LC_TIME=en_GB /bin/date"
+alias tree="erd --hidden --no-git --no-ignore --prune --human --icons --disk-usage physical --layout inverted --dir-order last"
+alias rm="trash -v"
+alias l="eza --color=always --all --group-directories-first"
+alias ls="eza --color=always --icons=always --all --long --git --group-directories-first --no-filesize --no-time --no-user"
 
-alias b="btm -C ~/.config/bottom/minimal.toml"
-alias bf="btm"
-
-alias wfpass="nmcli device wifi show-password"
-
+# Some systemctl stuff
 alias sysoff="systemctl poweroff"
 alias sysreb="systemctl reboot"
 alias systui="systemctl-tui"
 
+# Network related stuff
+alias wfpass="nmcli device wifi show-password"
 alias ping="gping"
 alias pport="ss -tulnp | grep LISTEN"
 alias ip="ip -c -br"
-alias h="history"
-alias date="LC_TIME=en_GB /bin/date"
-
-alias ff="fastfetch"
-alias fff="fastfetch --config ~/.config/fastfetch/config-f.jsonc"
-
-alias lg="lazygit"
-alias ld="lazydocker"
-
-alias l="eza --color=always --all --group-directories-first"
-alias ls="eza --color=always --icons=always --all --long --git --group-directories-first --no-filesize --no-time --no-user"
-
-alias rm="trash -v"
-
-alias tree="erd --hidden --no-git --no-ignore --prune --human --icons --disk-usage physical --layout inverted --dir-order last"
-alias bench="hyperfine"
-alias scc="scc --gen --no-complexity --no-cocomo"
 
 # Transmission
 alias tdu="transmission-daemon"
@@ -67,7 +64,6 @@ function c
     end
 end
 
-#alias cat="bat --style=plain"
 function cat
     if test (count $argv) -eq 0
         set file (fzf)
@@ -79,7 +75,7 @@ end
 
 function cg
     set git_root (git rev-parse --show-toplevel)
-    if test $status ~= 0 then
+    if test $status -ne 0
         echo "Not in git repository"
     else
         c $git_root
@@ -91,7 +87,6 @@ function mkcd
     c $argv
 end
 
-#alias ssh="kitty +kitten ssh"
 function s
     if test (count $argv) -eq 0
         sshs --template "kitty +kitten ssh \"{{{name}}}\""
