@@ -94,12 +94,7 @@
 		},
 		{
 			"type": "uptime",
-			"key": "│ ├󰅐",
-			"keyColor": "green"
-		},
-		{
-			"type": "display",
-			"key": "│ └󰍹",
+			"key": "│ └󰅐",
 			"keyColor": "green"
 		},
 		{
