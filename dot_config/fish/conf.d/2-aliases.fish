@@ -2,6 +2,7 @@
 alias yay="yay --color=always"
 alias bf="btm"
 alias h="history"
+alias hr="history | v -R"
 alias bench="hyperfine"
 alias scc="scc --gen --no-complexity --no-cocomo"
 alias ff="fastfetch"
